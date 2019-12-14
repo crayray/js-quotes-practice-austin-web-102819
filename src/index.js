@@ -2,6 +2,7 @@
 // only runs after the DOM has finshed loading. 
 window.addEventListener("DOMContentLoaded", () => {
     const quoteContainer = document.getElementById('quote-list');
+    let likeCount;
 
     // Populate quotes
         // Make a FETCH get call to http://localhost:3000/quotes?_embed=likes
@@ -27,15 +28,29 @@ window.addEventListener("DOMContentLoaded", () => {
                 <p class="mb-0">${quoteOutput[quote].quote}</p>
                 <footer class="blockquote-footer">${quoteOutput[quote].author}</footer>
                 <br>
-                <button class='btn-success'>Likes: <span>${quoteOutput[quote].likes}</span></button>
-                <button class='btn-danger'>Delete</button>
                 </blockquote>
+                <div id = "likes">
+                </div>
+                <button class='btn-danger'>Delete</button>
             </li>`
-                
+            console.log(quoteOutput[quote]);
+               //find likes
+               // For some reason, I cannot call likeCount.length to get the count of likes. The error is:
+               //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Cant_access_lexical_declaration_before_init
+               for (likes in quoteOutput[quote]){
+                //    console.log(quoteOutput[quote][likes].length);
+                    likeCount = quoteOutput[quote][likes]
+                    console.log(likeCount);
+                    
+                   let likeButton = document.createElement('div');
+                   likeButton.innerHtml= `  <button class='btn-success'>Likes: <span></span></button>`
+               } 
+            
             quoteContainer.appendChild(li);
         }
         
     }
+
 
   fetchQuotes(); 
   parseQuotes();    
