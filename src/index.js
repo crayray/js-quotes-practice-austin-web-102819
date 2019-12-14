@@ -27,7 +27,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 <p class="mb-0">${quoteOutput[quote].quote}</p>
                 <footer class="blockquote-footer">${quoteOutput[quote].author}</footer>
                 <br>
-                <button class='btn-success'>Likes: <span>${quoteOutput[quote].likes}</span></button>
+                <button class='btn-success'>Likes: <span>${quoteOutput[quote].likes.length}</span></button>
                 <button class='btn-danger'>Delete</button>
                 </blockquote>
             </li>`
